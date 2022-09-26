@@ -1,0 +1,151 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-  
+    latest.js">
+    </script>
+    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-
+    dropdown.js">
+    </script>
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Travel University</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/insertGrades"> Gradebook <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <!-- <div class="card w-85 mx-auto" style="color: black; margin-top: 10px;"> -->
+        <div class="card w-85 mx-auto" style="color: black; margin-top: 10px;">
+            <div class="card-header">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">Search</button>
+                    </li>
+                    
+
+                </ul>
+            </div>
+
+            <div class="card-body">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <form id="courseSeach" class="form" action="/courseSearch" method="POST">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="courseSubject">Subject</label>
+                                    <input type="text" class="form-control" name="Subject" id="Subject"
+                                        placeholder="e.g: CSCI" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="courseNumber">Course Number</label>
+                                    <input type="text" class="form-control" name="Number" id="Number"
+                                        placeholder="e.g: 6212" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="courseTitle">Title</label>
+                                <input type="text" class="form-control" name="Title" id="Title"
+                                    placeholder="e.g: Computer Architecture" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search Course Catalog</button>
+                        </form>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid w-85 mx-auto " style="margin-top: 10px;">
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title"> Students in {{students[4]}} {{students[5]}}</h5>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">UID</th>
+                            <th scope="col">Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in students %}
+                        <tr>
+                            <td>{{i[0]}}</td>
+                            <td>{{i[1]}}</td>
+                            <td>{{i[2]}}</td>
+                            <td>
+                                <form id="changeGrade" action="/changeGrade/{{i[2]}}/{{i[7]}}" method="POST">
+
+                                    <div class="form-group">
+                                        <label for="sel1">Select list (select one):</label>
+                                        <form id="form1" action="/changeGrade/{{i[2]}}" method="POST" >
+                                            <input type="text" class="form-control" name = grade id="grade" placeholder="IP" required>
+                                            <input type="submit" value="Submit">
+                                        </form>
+                                    </div>
+        
+                                   
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>

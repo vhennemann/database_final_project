@@ -1,0 +1,148 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/custom.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Register
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/searchSections">Search Sections</a></li>
+                            <li><a class="dropdown-item" href="#">Browse Course Catalog</a></li>
+                            <li><a class="dropdown-item" href="#">Add/Drop Courses</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <!-- <div class="card w-85 mx-auto" style="color: black; margin-top: 10px;"> -->
+        <div class="card w-85 mx-auto" style="color: black; margin-top: 10px;">
+            <div class="card-header">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">Keyword Search</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false">Advanced Search</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
+                            type="button" role="tab" aria-controls="messages" aria-selected="false">CRN</button>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <div class="card-body">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <form id="keyword" class="form" action="/keywordSearch" method="post">
+                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; margin-top: 5px;">Enter Your
+                                Search
+                                Criteria</h5>
+                            <div class="form-group">
+                                <label for="searchKeyword">Keyword</label>
+                                <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"
+                                    placeholder="e.g: Architecture, software, design, crypto">
+                            </div>
+
+                            
+                            <button  class="submit-btn btn btn-dar" type="submit">Search Course Catalog</button>
+
+
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; margin-top: 5px;">Enter Your Search
+                            Criteria</h5>
+
+                        <form id="advancedSearch" class="form" action="/courseSearch" method="post">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="courseSubject">Subject</label>
+                                    <input type="text" class="form-control" id="courseSubject" placeholder="e.g: CSCI">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="courseNumber">Course Number</label>
+                                    <input type="number" class="form-control" id="courseNumber" placeholder="e.g: 6212">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="courseTitle">Title</label>
+                                <input type="text" class="form-control" id="courseTitle"
+                                    placeholder="e.g: Computer Architecture">
+                            </div>
+                            
+
+                            <button type="submit" class="btn btn-primary">Search Course Catalog</button>
+
+
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                        <form id="crnSearch" action="/searchSection" method="post">
+                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; margin-top: 5px;">Enter Your
+                                Search
+                                Criteria</h5>
+                            <div class="form-group">
+                                <label for="searchKeyword">CRN</label>
+                                <input type="text" class="form-control" id="searchKeyword"
+                                    placeholder="e.g: 1111111">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Search Course Catalog</button>
+
+
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    </div>
+
+
+</body>
